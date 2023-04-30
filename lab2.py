@@ -34,3 +34,14 @@ def PeligroCliente(peligro):
         case "Green":
             outputList = ["Red","Orange","Yellow","Green"]
     return outputList
+
+def FDaño(CurrentList,danger):
+    #Se devuelven los lugares cuyo nivel de peligro 
+    #admitido se encuentra en la lista de dangerList
+    matching = []
+    LDaño = []
+    LDaño = FDaño(danger)
+    for i in range(len(CurrentList)):
+        if any(elem in CurrentList[i]['zoneDangerous'] for elem in LDaño):
+            matching.append(CurrentList[i])
+    return matching
