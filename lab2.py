@@ -38,10 +38,18 @@ def PeligroCliente(peligro):
 def FDaño(CurrentList,danger):
     #Se devuelven los lugares cuyo nivel de peligro 
     #admitido se encuentra en la lista de dangerList
-    matching = []
+    Buscando = []
     LDaño = []
     LDaño = FDaño(danger)
     for i in range(len(CurrentList)):
         if any(elem in CurrentList[i]['zoneDangerous'] for elem in LDaño):
-            matching.append(CurrentList[i])
-    return matching
+            Buscando.append(CurrentList[i])
+    return Buscando
+
+def PMascotas(CurrentList,wannaPetFriendly):
+    #Se devuelven los lugares que coinciden con el valor de busqueda del usuario
+    Buscando = []
+    for i in range(len(CurrentList)):
+        if(CurrentList[i]['isPetFriendly'] == wannaPetFriendly):
+            Buscando.append(CurrentList[i])
+    return Buscando
