@@ -68,3 +68,34 @@ def precio(List, budget):
         if(List[i]['price']<=budget):
             Buscando.append(List[i])
     return Buscando
+
+def ADatos(CurrentList):
+   
+    outputList = []
+    for i in range(len(CurrentList)):
+        outputList.append(CurrentList[i]['id'])
+    return outputList
+
+def Flugares(input1,input2):
+    MatchTypeBuilderList = []
+   
+    MatchTypeBuilderList = construccion(input1,input2['typeBuilder'])
+
+    if(input2['typeBuilder']=="Houses"):
+        SecondFilterList = FDaño(MatchTypeBuilderList,input2['minDanger'])
+    if(input2['typeBuilder']=="Apartments"):
+        SecondFilterList = PMascotas(MatchTypeBuilderList,input2['wannaPetFriendly'])
+    if(input2['typeBuilder']=="Premises"):
+        SecondFilterList = Actividad_Comercial(MatchTypeBuilderList,input2['commercialActivity'])
+
+    
+    FilterPriceList = precio(SecondFilterList,input2['budget'])
+
+    
+    FilterPriceList.sort(key = lambda elem: elem['price'])
+    PrintList = ADatos(FilterPriceList)
+    print(PrintList)
+
+
+
+
