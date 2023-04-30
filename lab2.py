@@ -60,3 +60,11 @@ def Actividad_Comercial(List, Actividad):
         if(Actividad in List[i]['commercialActivities']):
             matching.append(List[i])
     return matching
+
+def precio(List, budget):
+    
+    Buscando = []
+    for i in range(len(List)):
+        if(List[i]['price']<=budget):
+            Buscando.append(List[i])
+    return Buscando
