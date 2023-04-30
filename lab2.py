@@ -1,13 +1,36 @@
-import json as jreader
+import json 
 
 def ReadJsonFile():
     data = []
     with open (r'C:\Users\Saul\Downloads\input_challenge_lab_2.jsonl') as JsonFile:
-        for line in jsonFile:
+        for line in JsonFile:
             data.append(json.loads(line))
     return data
 
-#Leemos la informacion y aplicamos el filtro por cada espacio
-data = jreader.ReadJsonFile()
-for i in range(len(data)):
-    pp.filterMatchPlaces(data[i]['input1'],data[i]['input2'])
+def construccion (input1, typeBuilder):
+    
+    construc = []
+    Fconstruc = []
+    for i in range(len(input1)):
+        for j in input1[i]['builds'].keys():
+            if(j == typeBuilder):
+                construc.append(input1[i]['builds'][j])
+
+    for i in construc:
+        for j in i:
+            Fconstruc.append(j)
+    return Fconstruc
+
+def PeligroCliente(peligro):
+   
+    outputList = []
+    match peligro:
+        case "Red":
+            outputList = ["Red"]
+        case "Orange":
+            outputList = ["Red","Orange"]
+        case "Yellow":
+            outputList = ["Red","Orange","Yellow"]
+        case "Green":
+            outputList = ["Red","Orange","Yellow","Green"]
+    return outputList
